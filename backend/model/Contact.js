@@ -10,19 +10,19 @@ const contactSchema = new Schema({
     },
     fname: {
         type: String,
-        required: true,
+        required: [true, "Why you do not write first name?"]
     },
     lname:{
         type: String,
-        required: true,
+        required: [true, "Why you do not write last name?"],
     },
     email: {
         type: String,
-        required: true,
+        required: [true, "Have you any email?"],
     },
     phone: {
         type: String,
-        required: true,
+        required: [true, "Have you any phone?"],
     },
     otherPhone: {
         type: String,
