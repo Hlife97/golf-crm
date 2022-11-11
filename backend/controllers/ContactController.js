@@ -61,6 +61,47 @@ const show = async (req, res, next) => {
     return res.status(200).json({contact})
 }
 
+//? Update Contact
+const update = async (req, res, next) => {
+    let contact;
+
+    try{
+        contact = await Contact.findByIdAndUpdate(req.params.id, req.body);
+    }catch(err){
+        return res.status(400).json({
+            status: 400,
+            message: err
+        })
+    }
+
+    if(!contact){
+        return res.status(404).json({
+            status: 404,
+            message: 'Contact not found!'
+        })
+    }
+    return res.status(200).json({contact})
+}
+
+//? Delete Contact
+
+const remove = async (req, res, next) => {
+    try{
+        await Contact.findByIdAndRemove(req.params.id);
+    }catch(err){
+        return res.status(400).json({
+            status: 400,
+        })
+    }
+
+    return res.status(200).json({
+        status: 200,
+        message: 'Contact removed successfully!'
+    })
+}
+
 exports.index = index;
 exports.store = store;
 exports.show = show;
+exports.update = update;
+exports.remove = remove;
