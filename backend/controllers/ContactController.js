@@ -26,29 +26,21 @@ const index = async (req, res, next) => {
 // ? Create New Contact
 const store = async (req, res, next) => {
 
-    const {owner, fname, lname, email, phone, } = req.body;
-    let contact;
+    const contact = new Contact(req.body);
 
     try{
-        contact = new Contact({
-            owner,
-            fname,
-            lname,
-            email,
-            phone
-        });
         await contact.save();
     }catch(err){
-        return res.status(500).json({
-            status: 500,
-            message: 'Server error'
+        return res.status(400).json({
+            status: 400,
+            message: 'Unable to save to database'
         })
     }
 
     if(!contact){
         return res.status(500).json({
             status: 500,
-            message: 'Contact can not added.'
+            message: 'Unable to save to database'
         })
     }
 

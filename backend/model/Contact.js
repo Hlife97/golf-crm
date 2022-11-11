@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const contactSchema = new Schema({
     owner: {
         type: String,
-        required: true,
+        required: false,
         // trim:true
     },
     fname: {
@@ -36,6 +36,10 @@ const contactSchema = new Schema({
         type: String,
         required: false,
     },
+    leadSource: {
+        type: String,
+        required: false,
+    },
     vendorName:{
         type: String,
         required: false,
@@ -57,10 +61,60 @@ const contactSchema = new Schema({
         required: false,
     },
     dateOfBirth: {
-        type: String,
+        type: Date,
         required: false,
     },
     asstPhone: {
+        type: String,
+        required: false,
+    },
+    addressInfo: {
+        mailing: {
+            street: {
+                type: String,
+                required: false,
+            },
+            city: {
+                type: String,
+                required: false,
+            },
+            state: {
+                type: String,
+                required: false,
+            },
+            country: {
+                type: String,
+                required: false,
+            },
+            zip: {
+                type: String,
+                required: false,
+            },
+        },
+        other: {
+            street: {
+                type: String,
+                required: false,
+            },
+            city: {
+                type: String,
+                required: false,
+            },
+            state: {
+                type: String,
+                required: false,
+            },
+            country: {
+                type: String,
+                required: false,
+            },
+            zip: {
+                type: String,
+                required: false,
+            }
+        }
+    },
+    image: {
         type: String,
         required: false,
     }
