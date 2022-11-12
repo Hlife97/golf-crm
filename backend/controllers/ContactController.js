@@ -84,7 +84,6 @@ const update = async (req, res, next) => {
 }
 
 //? Delete Contact
-
 const remove = async (req, res, next) => {
     try{
         await Contact.findByIdAndRemove(req.params.id);

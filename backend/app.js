@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = require('./routes/api');
+const cors = require('cors');
 const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 app.use("/contacts", router)
 
 // DB Connection
